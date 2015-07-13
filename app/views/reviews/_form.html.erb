@@ -1,0 +1,4 @@
+<%= simple_form_for [@product, @review], remote: true do |f| %>
+  <%= f.input :body, label: false, input_html: {placeholder: "review"} %>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>

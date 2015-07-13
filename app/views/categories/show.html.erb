@@ -1,0 +1,14 @@
+<h1>Category: <%= @category.name %></h1>
+<p>There are <%= @products.length %> products</p>
+<% @products.each do |product| %>
+  <div>
+    <h4><%= product.title %></h4>
+    Description:<%= product.description %>
+    Price:      $ <%= product.price %>
+    Sku:        <%= product.sku %>
+    Quantity:   <%= product.quantity %>
+    <br>
+    Producer Name:   <%= product.producer.name %>
+    Producer Information:   <%= product.producer.information %>
+  </div>
+<% end %>

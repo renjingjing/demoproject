@@ -1,0 +1,45 @@
+<h1><%= @product.title %></h1>
+<div class="col-md-8">
+  <p><%= @product.description %></p>
+  <p>Created On: <%= formatted_date(@product.created_at) %></p>
+  <!-- <div class="col-md-3"> -->
+
+  <%# if @product.attachments.present?  %>
+  <!-- <h3>Attachments Image</h3> -->
+  <%# @product.attachments.each do |img| %>
+    <%#= link_to "Download File", img.image.url %>
+  <%# end %>
+<%# end %>
+
+  <!-- </div> -->
+<hr>
+
+  <% if @product.favourited_by?(current_user) %>
+    <%= link_to "Un-Favourite", product_favourite_path(@product, @favourite),
+                  method: :delete  %>
+  <% else %>
+    <%= link_to "Favourite", product_favourites_path(@product), method: :post %>
+  <% end %>
+
+
+</div>
+<div class="col-md-4">
+  <%#= image_tag @product.image.url %>
+</div>
+
+<div class="clearfix"></div>
+
+<%= render "/reviews/form" %>
+
+<h2>Reviews</h2>
+<div id="reviews">
+  <% if @product.reviews.present?  %>
+  <% @product.reviews.each do |rev| %>
+    <%# partials can access instance varialbes but not
+         local variables, so I can access @product but not
+         review so i need to pass review in  %>
+    <%= render "/reviews/review", review: rev %>
+  <% end %>
+  <% end %>
+
+</div>

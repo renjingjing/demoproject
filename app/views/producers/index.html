@@ -1,0 +1,9 @@
+<h1>Producers and Information</h1>
+<% @producers.each do |producer| %>
+  <hr>
+  <div>
+    <h4><%= producer.name %></h4>
+    <!-- <br> -->
+    <%= producer.information %>
+  </div>
+<% end %>

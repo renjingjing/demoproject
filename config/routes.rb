@@ -1,8 +1,50 @@
 Rails.application.routes.draw do
+  root "welcomes#index"
   resources :producers
   resources :products
   resources :users
   resources :categories
+
+    # get "/hello/:name" => "welcome#hello", as: "hello_person"
+
+  get "/about" => "about#index"
+
+    # get is a method that takes it a single argument which is a hash. So the
+    # explicit format for it is:
+  get({"/contact" => "contact#index"})
+
+  post "/contact" => "contact#create"
+    # match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
+
+    resources :products, only: [] do
+      # resources :comments
+      resources :favourites, only: [:create, :destroy]
+      resources :reviews, only: [:create, :destroy]
+    end
+
+    resources :categories, only: [:show]
+
+
+    resources :users, except: [:edit, :update] do
+      # this will give a URL /users/edit because we don't need the id of the user
+      # in the URL because we have it in the session. In addition, it could pose
+      # a security risk to have the user id part of the URL
+      # as: :collection option makes it not include :id in the URL
+      get :edit, on: :collection
+
+      patch :update, on: :collection
+
+    end
+
+    resources :sessions, only: [:new, :create] do
+      # this will make the destry action not requie an id so we can access
+      # the destroy action with sessions_path or /sessions without passing an id
+      delete :destroy, on: :collection
+    end
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

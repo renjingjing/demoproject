@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712052956) do
+ActiveRecord::Schema.define(version: 20150712194334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20150712052956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "favourites", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "favourites", ["product_id"], name: "index_favourites_on_product_id", using: :btree
+  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
   create_table "producers", force: :cascade do |t|
     t.string   "name"
@@ -37,13 +48,28 @@ ActiveRecord::Schema.define(version: 20150712052956) do
     t.integer  "quantity"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+    t.integer  "producer_id"
   end
+
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["producer_id"], name: "index_products_on_producer_id", using: :btree
+
+  create_table "reviews", force: :cascade do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
     t.string   "password_digest"
     t.string   "address1"
     t.string   "address2"
@@ -52,4 +78,10 @@ ActiveRecord::Schema.define(version: 20150712052956) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "favourites", "products"
+  add_foreign_key "favourites", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "products", "producers"
+  add_foreign_key "reviews", "products"
+  add_foreign_key "reviews", "users"
 end
