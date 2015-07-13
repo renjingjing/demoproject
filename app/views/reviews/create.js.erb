@@ -1,7 +1,7 @@
-// $("#reviews").prepend("<%= j render 'review', review: @review %>");
-$("#<%= dom_id(@product) %> .reviews").prepend("<%= j render 'review',review: @review.to_json %>");
-<%# We need to reset the @review variable because at this stage it's persisted
-    to the database which means the form will be pre-populated with the review
-    that was just created %>
-<% @review = Review.new %>
-$("#<%= dom_id(@product) %> form").replaceWith("<%= j render 'form',review: @review %>");
+ $("#reviews").prepend("<%= j render 'review', review: @review %>");
+
+ <%# We need to reset the @review variable because at this stage it's persisted
+     to the database which means the form will be pre-populated with the review
+     that was just created %>
+ <% @review = Review.new %>
+ $("#new_review").replaceWith("<%= j render 'form'  %>");
