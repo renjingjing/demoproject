@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     @product         = Product.find params[:product_id]
-    review_params  = params.require(:review).permit(:body)
+    review_params  = params.require(:review).permit(:body,:image)
     @review        = Review.new review_params
     @review.user   = current_user
     @review.product = @product

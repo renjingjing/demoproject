@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     # form needed to create the product
     @product = Product.new
     # This will render app/views/products/new.html.erb (by convention)
-    # 3.times {@product.attachments.build}
+    #  1.times {@product.reviews.build}
   end
 
   def create
@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
     redirect_to root_path, alert: "access denied" unless can? :edit, @product
     # if the record updates successfully we redirect the user to the
     # product show page.
-    @product.slug = nil
+    # @product.slug = nil
     if @product.update(product_params)
       redirect_to product_path(@product), notice: "Product Updated"
     else
@@ -93,6 +93,7 @@ class ProductsController < ApplicationController
     # using .frienly will make it find the product by
     # its slug instead of by its id
     @product = Product.find params[:id]
+    # @product = Product.friendly.find params[:id]
   end
 
   def product_params
@@ -102,7 +103,6 @@ class ProductsController < ApplicationController
     # default about what parameters you'd like to allow for your record
     # in this case we only want the user to enter teh title and the body
     params.require(:product).permit([:title, :description, :category_id,:producer_id ,:price, :sku, :quantity])
+                                                  # {reviews_attributes: [:body,:id,:_destroy]})
   end
-
-
 end

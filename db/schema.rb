@@ -11,10 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712194334) do
+ActiveRecord::Schema.define(version: 20150713182044) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attachments", force: :cascade do |t|
+    t.string   "avatar"
+    t.integer  "avatar_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "attachments", ["avatar_id"], name: "index_attachments_on_avatar_id", using: :btree
+
+  create_table "avatars", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "review_id"
+    t.integer  "user_id"
+    t.integer  "producer_id"
+    t.integer  "product_id"
+  end
+
+  add_index "avatars", ["imageable_type", "imageable_id"], name: "index_avatars_on_imageable_type_and_imageable_id", using: :btree
+  add_index "avatars", ["producer_id"], name: "index_avatars_on_producer_id", using: :btree
+  add_index "avatars", ["product_id"], name: "index_avatars_on_product_id", using: :btree
+  add_index "avatars", ["review_id"], name: "index_avatars_on_review_id", using: :btree
+  add_index "avatars", ["user_id"], name: "index_avatars_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +59,27 @@ ActiveRecord::Schema.define(version: 20150712194334) do
 
   add_index "favourites", ["product_id"], name: "index_favourites_on_product_id", using: :btree
   add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.string   "title"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "producers", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +109,7 @@ ActiveRecord::Schema.define(version: 20150712194334) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   add_index "reviews", ["product_id"], name: "index_reviews_on_product_id", using: :btree
@@ -76,8 +125,14 @@ ActiveRecord::Schema.define(version: 20150712194334) do
     t.string   "note"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "image"
   end
 
+  add_foreign_key "attachments", "avatars"
+  add_foreign_key "avatars", "producers"
+  add_foreign_key "avatars", "products"
+  add_foreign_key "avatars", "reviews"
+  add_foreign_key "avatars", "users"
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
   add_foreign_key "products", "categories"

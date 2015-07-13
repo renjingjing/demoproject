@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    # 1.times {@user.avatars.build}
   end
 
   def create
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email,
                                   # :avatar,
-                                  :password, :password_confirmation,:address1,:address2,:note)
+                                  :password, :password_confirmation,:address1,:address2,:note,
+                                  {avatars_attributes:[:avatar, :id, :_destroy]})
   end
 end

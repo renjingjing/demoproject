@@ -1,8 +1,13 @@
-<div class="well" >
-<!-- id="<%#= dom_id(review) %>"> -->
+<div class="well"  id="<%= dom_id(review) %>">
+  <div >
+  <% if review.image.present? %>
+    <%= image_tag review.image.url(:medium) %>
+  <% end %>    
+  </div>
   <%= review.body %> |
-  <!-- Created By: <%= review.user.full_name %> on -->
+  Created By: <%= review.user.full_name %> on
     <%= formatted_date(review.created_at) %>
+    <hr>
   <% if can? :destroy, review  %>
     <%= link_to "Delete", product_review_path(@product, review), method: :delete,
                 data: {confirm: "Are you sure you want delete the review?"},

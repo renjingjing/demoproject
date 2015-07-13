@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # mount_uploader :avatar, ImageUploader
+  # has_many :avaters, as: :imageable
+  # mount_uploader :avatar, AvatarUploader
+  # has_many :avatars, dependent: :destroy
+  # accepts_nested_attributes_for :avatars, allow_destroy:true, reject_if: lambda {|x| !x[:avatar].present?}
 
   # this association is for products that have been created by the user
   has_many :comments,  dependent: :destroy

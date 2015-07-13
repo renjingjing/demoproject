@@ -29,12 +29,7 @@
 
 <div class="clearfix"></div>
 
-<%#= render "/reviews/form" %>
-<%= simple_form_for [@product, @review], remote: true do |f| %>
-  <%= f.input :body, label: false, input_html: {placeholder: "review"} %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
-<% end %>
-
+<%= render "/reviews/form" %>
 
 <h2>Reviews</h2>
 <div id="reviews">

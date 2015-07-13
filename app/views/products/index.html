@@ -1,5 +1,6 @@
 <h1>Product and Information</h1>
 <% @products.each do |product| %>
+
   <hr>
   <div>
     <h4><%= link_to product.title , product_path(product)%></h4>
@@ -10,7 +11,9 @@
     <br>
     Producer Name:   <%= product.producer.name %>
     <!-- Producer Information:   <%#= product.producer.information %> -->
-
+      <!-- <%# if product.avatars.present? %>
+        <%#= image_tag product.avatar.url(:thumb) %>
+      <%# end %> -->
   </div>
 <% end %>
 <%= paginate @products, theme: 'twitter-bootstrap-3' %>

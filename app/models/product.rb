@@ -8,6 +8,16 @@ class Product < ActiveRecord::Base
   # extend FriendlyId
   # friendly_id :title, use: [:slugged,:history]
   #
+  # has_many :avaters, as: :imageable
+  # mount_uploader :avatar, AvatarUploader
+  # has_many :avatars, dependent: :destroy
+  # accepts_nested_attributes_for :avatars, allow_destroy:true, reject_if: lambda {|x| !x[:avatar].present?}
+
+  # include adds module methods as instance methods
+  # extend adds module methods as class methods
+  # extend FriendlyId
+  # friendly_id :title, use: [:slugged,:history]
+
   belongs_to :category
   belongs_to :producer
 
