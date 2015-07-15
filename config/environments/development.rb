@@ -34,8 +34,25 @@ Rails.application.configure do
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
-  config.assets.raise_runtime_errors = true
 
+  #for newsletter
+  config.assets.raise_runtime_errors = true
+  config.action_mailer.delivery_method = :letter_opener
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+#   Demoproject::Application.configure do
+#   # config.action_mailer.default_url_options = { host: "railscasts.com" }
+#   config.action_mailer.raise_delivery_errors = true
+#   config.action_mailer.delivery_method = :letter_opener
+#   config.action_mailer.smtp_settings = {
+#     address: "smtp.gmail.com",
+#     port: 587,
+#     # domain: "railscasts.com",
+#     authentication: "plain",
+#     enable_starttls_auto: true,
+#     user_name:            ENV["email_user_name"],
+#     password:             ENV["email_password"]  }
+#   # Rest of file omitted.
+# end
+
 end

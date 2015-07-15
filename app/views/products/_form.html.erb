@@ -1,0 +1,69 @@
+<div >
+<h1><%= @product.title %></h1>
+</div>
+<div>
+  <% if @product.attachments.present?  %>
+  <h3>Attachments Image</h3>
+  <% @product.attachments.each do |attachment| %>
+    <%= image_tag attachment.image.url(:product_show) %>
+  <% end %>
+<% end %>
+
+</div>
+<div class="col-md-8">
+  <p><%= @product.description %></p>
+  Price:      $ <%= @product.price %>
+  Sku:        <%= @product.sku %>
+  Quantity:   <%= @product.quantity %>
+  <br>
+  Producer Name:   <%= @product.producer.name %>
+  <p>Created On: <%= formatted_date(@product.created_at) %></p>
+</div>
+<hr>
+<div>
+  <% if @product.favourited_by?(current_user) %>
+    <%= link_to "Un-Favourite", product_favourite_path(@product, @favourite),
+                  method: :delete  %>
+  <% else %>
+    <%= link_to "Favourite", product_favourites_path(@product), method: :post %>
+  <% end %>
+</div>
+
+<div>
+<%= simple_form_for @product, class: "form-horizontal" do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :price %>
+  <%= f.input :sku %>
+  <%= f.input :quantity %>
+  <%#= f.input :producer %>
+<p>upload product images</p>
+<% if @product.errors.messages.has_key?(:attachments) %>
+<div class="alert alert-danger">You must provide at least one image</div>
+<% end %>
+<div id="attachments">
+  <%= f.simple_fields_for :attachments do |a| %>
+    <%= render "attachment_fields", f: a  %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add attachment', f, :attachments %>
+  </div>
+  <%= f.submit "Submit Product", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>
+
+<hr>
+<div id="reviews">
+<h4>Reviews</h4>
+  <% if @product.reviews.present?  %>
+  <% @product.reviews.each do |rev| %>
+    <%# partials can access instance varialbes but not
+         local variables, so I can access @product but not
+         review so i need to pass review in  %>
+    <%= render "/reviews/review", review: rev %>
+  <% end %>
+  <% end %>
+</div>
+<div class="clearfix"></div>
+<%= render "/reviews/form" %>

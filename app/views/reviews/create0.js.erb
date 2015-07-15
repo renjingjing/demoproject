@@ -1,6 +1,0 @@
-$("#<%= dom_id(@product) %> .reviews").prepend("<%= j render 'review',review: @review %>");
-<% @review = Review.new %>
- $("#<%= dom_id(@product) %> form").replaceWith("<%= j render 'form',review: @review %>");
- $("#reviews").prepend("<%= j render 'review', review: @review %>");
- <% @review = Review.new %>
- $("#new_review").replaceWith("<%= j render 'form'  %>");

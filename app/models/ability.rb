@@ -9,5 +9,14 @@ class Ability
     can :destroy, Review do |review|
       review.user == user
     end
-  end
+    #
+     can :manage, Product do |product|
+      product.user == user
+      #  product.user == admin_user
+     end
+    #
+    # can :publish, Product do |product|
+    #   product.may_publish? && product.user == admin_user
+    # end
+   end
 end

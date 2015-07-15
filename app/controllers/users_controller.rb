@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
     if @user.save
       session[:user_id] = @user.id
-      # UsersMailer.notify_signed_up_user(@user).deliver_now
+      RegistusersMailer.notify_signed_up_user(@user).deliver_now
       redirect_to root_path, notice: "Logged In!"
     else
       render :new

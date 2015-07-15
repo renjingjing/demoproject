@@ -1,9 +1,10 @@
 class ProductsController < ApplicationController
-  before_action :find_product, only: [:show]
+  before_action :find_product, only: [:show,:edit,:update]
   # this before_action will redirect the user to the sign in page unless
   # they are signed in already. The exception will be the index and show actions
   # because we want them to be publicly available
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, only: [:index,:show,:edit,:update]
+  #need separate user and admin_user
 
   # before_action :authorize, only: [:edit, :update, :destroy]
 
@@ -22,7 +23,7 @@ class ProductsController < ApplicationController
     # form needed to create the product
     @product = Product.new
     # This will render app/views/products/new.html.erb (by convention)
-    #  1.times {@product.reviews.build}
+    1.times {@product.attachments.build}
   end
 
   def create
@@ -74,10 +75,10 @@ class ProductsController < ApplicationController
   end
 
   def update
-    redirect_to root_path, alert: "access denied" unless can? :edit, @product
+    # redirect_to root_path, alert: "access denied" unless can? :edit, @product
     # if the record updates successfully we redirect the user to the
     # product show page.
-    # @product.slug = nil
+    #  @product.slug = nil
     if @product.update(product_params)
       redirect_to product_path(@product), notice: "Product Updated"
     else
@@ -102,7 +103,9 @@ class ProductsController < ApplicationController
     # This uses Strong Paramters feature of Rails where you must explicit by
     # default about what parameters you'd like to allow for your record
     # in this case we only want the user to enter teh title and the body
-    params.require(:product).permit([:title, :description, :category_id,:producer_id ,:price, :sku, :quantity])
-                                                  # {reviews_attributes: [:body,:id,:_destroy]})
-  end
+    params.require(:product).permit([:title, :description, :price, :sku, :quantity,:category_id,:producer_id,
+                                      {attachments_attributes:[:image, :image_id,:_destroy]}])
+
+   end
+  # :category_id,:producer_id ,:id,
 end

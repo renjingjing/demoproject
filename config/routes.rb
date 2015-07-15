@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+ # get 'spa/index'
+
   root "welcomes#index"
   resources :producers
   resources :products
@@ -16,11 +21,12 @@ Rails.application.routes.draw do
   post "/contact" => "contact#create"
     # match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
-
+    resources :newsletter_mailer
     resources :products, only: [] do
       # resources :comments
       resources :favourites, only: [:create, :destroy]
       resources :reviews, only: [:create, :destroy]
+      resources :cancellings, only: [:create]
     end
 
     resources :categories, only: [:show]

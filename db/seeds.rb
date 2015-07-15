@@ -24,7 +24,7 @@ end
         campaign, suffering the loss of his right eye at the Battle of Capua. Afterwards he moved
         lorence where, at the Caffè Michelangiolo, he met Giovanni Fattori, Silvestro Lega, and the
         rest of the artists who would soon be dubbed the Macchiaioli."
-  Producer.create({name: name,information: information})
+  producer = Producer.create({name: name,information: information})
 
   name = "Lily Hathaway"
   information  = "Her family lineage traces back to John Adams,
@@ -65,4 +65,4 @@ end
   quantity     = 2
   category_id  = 5
   producer_id  = 1
-  Product.create({title: title,description: description,price:price,sku:sku,quantity:quantity,category_id:category_id,producer_id:producer_id})
+  Product.create({title: title,description: description,price:price,sku:sku,quantity:quantity,category:Category.all.sample,producer:producer})

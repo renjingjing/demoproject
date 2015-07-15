@@ -1,6 +1,6 @@
 class Producer < ActiveRecord::Base
   belongs_to :category
-  has_many :products, dependent: :destroy
+  # has_many :products, dependent: :destroy
   # has_many :avaters, as: :imageable
   # mount_uploader :avatar, AvatarUploader
   # has_many :avatars, dependent: :destroy

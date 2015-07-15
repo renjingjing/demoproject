@@ -1,3 +1,5 @@
 class Attachment < ActiveRecord::Base
-  belongs_to :avatar
+  belongs_to :product
+  mount_uploader :image, ImageUploader
+
 end

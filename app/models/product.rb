@@ -18,6 +18,10 @@ class Product < ActiveRecord::Base
   # extend FriendlyId
   # friendly_id :title, use: [:slugged,:history]
 
+  has_many :attachments, dependent: :destroy
+  accepts_nested_attributes_for :attachments, allow_destroy:true ,reject_if: lambda {|x| !x[:image].present?}
+
+
   belongs_to :category
   belongs_to :producer
 

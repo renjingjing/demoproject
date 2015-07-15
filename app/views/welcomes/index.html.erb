@@ -1,0 +1,52 @@
+
+<!--div class="page-header"-->
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%=  image_tag("Mimage10.jpg", :height => 500, class: "img-responsive") %>
+      <div class="carousel-caption">
+          <h3>Demo Gallary</h3>
+      </div>
+    </div>
+    <div class="item">
+      <%=  image_tag("Mimage8.jpg", :height => 500, class: "img-responsive") %>
+      <div class="carousel-caption">
+          <h3>Art</h3>
+      </div>
+    </div>
+    <div class="item">
+      <%=  image_tag("Mimage6.jpg", :height => 500, class: "img-responsive") %>
+      <div class="carousel-caption">
+          <h3>Demo</h3>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Carousel   Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+<!--/div-->
+<!-- <div class="categories"> -->
+</div>
+<div class="categories">
+    <div class="single-category category-bar">
+      |
+  <% @categories.each do |category| %>
+  <%= link_to category.name, category_path(category) %>|
+    <% end %>
+    </div>
+</div>

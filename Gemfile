@@ -61,8 +61,16 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem "cocoon"
 gem 'cancancan'
+gem 'activeadmin', github: 'activeadmin'
+gem "devise"
 
-
+#for NewsletterMailer
+gem 'hpricot'
+gem 'premailer-rails3'
+#for text newsletter
+gem "roadie-rails"
+#weekly send enail
+gem 'whenever', :require => false
 # Use Unicorn as the app server
 # gem 'unicorn'
 
