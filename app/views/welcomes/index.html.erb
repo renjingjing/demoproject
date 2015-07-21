@@ -11,19 +11,19 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%=  image_tag("Mimage10.jpg", :height => 500, class: "img-responsive") %>
+      <%=  image_tag("main-2-2526x930.jpg", :height => 500, class: "img-responsive") %>
       <div class="carousel-caption">
           <h3>Demo Gallary</h3>
       </div>
     </div>
     <div class="item">
-      <%=  image_tag("Mimage8.jpg", :height => 500, class: "img-responsive") %>
+      <%=  image_tag("main-3-2526x930.jpg", :height => 500, class: "img-responsive") %>
       <div class="carousel-caption">
           <h3>Art</h3>
       </div>
     </div>
     <div class="item">
-      <%=  image_tag("Mimage6.jpg", :height => 500, class: "img-responsive") %>
+      <%=  image_tag("main-4-2526x930.jpg", :height => 500, class: "img-responsive") %>
       <div class="carousel-caption">
           <h3>Demo</h3>
       </div>
@@ -46,7 +46,115 @@
     <div class="single-category category-bar">
       |
   <% @categories.each do |category| %>
-  <%= link_to category.name, category_path(category) %>|
+  <%= link_to category.name, category_path(category),id:"a_catrgory_hover" %>|
     <% end %>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12 ">
+        <h3 class="welcome_container_padding">Latest Features Art</h3>
+    </div>
+</div>
+<!-- /.row -->
+
+<!-- Page Features -->
+<div class="row text-center welcome_container_padding">
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/still-1-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Rainbow Stone</h3>
+                <p>Colorful</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/figure-1-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Girl</h3>
+                <p>Little Lily</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/animal-6-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Bird</h3>
+                <p>My Love</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row text-center welcome_container_padding">
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/flower-1-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Still Flower</h3>
+                <p>Classic</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/figure-2-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Lady</h3>
+                <p>Red Dress Lady</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-sm-3 hero-feature welcome_pic_3">
+        <div class="thumbnail">
+            <img src="pshow/ab-animal-1-800-500.jpg" alt="">
+            <div class="caption">
+                <h3>Life</h3>
+                <p>Let's Do Somthing</p>
+                <p>
+                    <a href="#" class="btn btn-primary">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- /.row -->
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>Copyright &copy; Your Website 2014</p>
+        </div>
+    </div>
+</footer>
+
+</div>
+<!-- /.container -->

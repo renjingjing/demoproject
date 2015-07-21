@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 1
+  payment: 1.5
+  note: MyString
+  user_id: 
+  product_id: 
+  stripe_txn_id: MyString
+  aasm_state: MyString
+
+two:
+  quantity: 1
+  payment: 1.5
+  note: MyString
+  user_id: 
+  product_id: 
+  stripe_txn_id: MyString
+  aasm_state: MyString

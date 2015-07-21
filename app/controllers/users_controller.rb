@@ -39,6 +39,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email,
                                   # :avatar,
                                   :password, :password_confirmation,:address1,:address2,:note,
-                                  {avatars_attributes:[:avatar, :id, :_destroy]})
+                                  )
+                                  # {avatars_attributes:[:avatar, :id, :_destroy]}
   end
 end

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   # http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html#method-i-has_secure_password
   has_secure_password
   mount_uploader :image, ImageUploader
+  # before_create :generate_api_key
 
   # mount_uploader :avatar, ImageUploader
   # has_many :avaters, as: :imageable
@@ -35,4 +36,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}".strip.squeeze(" ")
   end
 
+  # private
+  # def generate_api_key
+  #   begin
+  #     self.api_key = SecureRandom.hex
+  #   end while User.exists?(api_key: self.api_key)
+  # end
 end

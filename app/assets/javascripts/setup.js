@@ -7,8 +7,7 @@ $(document).ready(function() {
     document.location.reload();
   });
 
-  $('form').submit(function(event) {
-    event.preventDefault();
-  });
-
+  // $('form').submit(function(event) {
+  //   event.preventDefault();
+  // });
 });

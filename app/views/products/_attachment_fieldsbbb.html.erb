@@ -1,0 +1,84 @@
+<div class="nested-fields">
+  <%= f.input :image %>
+  <%= link_to_remove_association "remove attachment", f %>
+  <hr>
+</div>
+<link rel="stylesheet" href="colorPicker.css">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="bootstrap.css">
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="jquery.colorPicker.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+
+<!-- <% #4.times do %>
+  <div class="col-md-3 portfolio-item">
+            <%#= image_tag "figure-2-800-500.jpg" %>
+  </div>
+<%# end %>
+</div> -->
+
+
+
+      <!-- <div class=" row ">
+          <div class=" col-md-6">
+            <button type="button" class="btn btn-primary" id="Show_now">Show Now</button>
+            <button type="button" class="btn btn-primary" id="Color_Pick">Color Pick</button>
+          </div >
+      </div>
+      <br>
+      <br>
+      <h3 id="colorTarget">Bootstrap Color Picker Demo</h3>
+      <form class="form-horizontal">
+        <div class="control-group">
+          <label class="control-label">Pick a Color</label>
+          <div class="controls input-prepend">
+            <input type="text" name="color" class="color input-small" />
+          </div>
+        </div>
+        <div class="control-group">
+          <label class="control-label">Pick a Color</label>
+          <div class="controls input-prepend">
+            <input type="text" name="color" class="color input-small" />
+          </div>
+        </div>
+      </form>
+      <br>
+      <br> -->
+
+      <!-- //  <script>
+      // // $(function(){
+      // // $('.demo2').colorpicker();
+      // // });
+      // // </script> -->
+      <!-- // <script type="text/javascript" src="jquery.js"></script>
+      // <script type="text/javascript" src="jquery.colorPicker.js"></script>
+      // <script type="text/javascript" src="app.js"></script> -->
+
+
+
+<!--  need var array-->
+<%# if @product.attachments.present?  %>
+<!-- image_tag review.image.url(:medium) -->
+<!-- /.row -->
+<%#= simple_form_for @product, class: "form-horizontal" do |f| %>
+<%#= f.input :title %>
+<%#= f.input :description %>
+<%#= f.input :price %>
+<%#= f.input :sku %>
+<%#= f.input :quantity %>
+<%#= f.input :producer %>
+<!-- <p>upload product images</p> -->
+<!-- <% #if @product.errors.messages.has_key?(:attachments) %> -->
+<!-- <div class="alert alert-danger">You must provide at least one image</div> -->
+<!-- <% #end %> -->
+<!-- <div id="attachments"> -->
+<%#= f.simple_fields_for :attachments do |a| %>
+<%#= render "attachment_fields", f: a  %>
+<%#= link_to_add_association 'add attachment', f, :attachments %>
+<!-- <% #end %> -->
+<!-- <div class="links">
+</div> -->
+<%#= f.submit "Submit Product", class: "btn btn-primary" %>
+<%# end %>
+<!-- S</div> -->

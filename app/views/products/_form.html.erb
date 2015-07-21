@@ -1,66 +1,109 @@
-<div >
-<h1><%= @product.title %></h1>
-</div>
-<div>
-  <% if @product.attachments.present?  %>
-  <h3>Attachments Image</h3>
-  <% @product.attachments.each do |attachment| %>
-    <%= image_tag attachment.image.url(:product_show) %>
-  <% end %>
-<% end %>
+<div class="container">
+    <!-- Portfolio Item Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Portfolio Item
+                <small><%= @product.title %></small>
+              </h1>
+          </div>
+      </div>
 
-</div>
-<div class="col-md-8">
-  <p><%= @product.description %></p>
-  Price:      $ <%= @product.price %>
-  Sku:        <%= @product.sku %>
-  Quantity:   <%= @product.quantity %>
-  <br>
-  Producer Name:   <%= @product.producer.name %>
-  <p>Created On: <%= formatted_date(@product.created_at) %></p>
-</div>
-<hr>
-<div>
-  <% if @product.favourited_by?(current_user) %>
-    <%= link_to "Un-Favourite", product_favourite_path(@product, @favourite),
-                  method: :delete  %>
-  <% else %>
-    <%= link_to "Favourite", product_favourites_path(@product), method: :post %>
-  <% end %>
-</div>
 
-<div>
-<%= simple_form_for @product, class: "form-horizontal" do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :sku %>
-  <%= f.input :quantity %>
-  <%#= f.input :producer %>
-<p>upload product images</p>
-<% if @product.errors.messages.has_key?(:attachments) %>
-<div class="alert alert-danger">You must provide at least one image</div>
-<% end %>
-<div id="attachments">
-  <%= f.simple_fields_for :attachments do |a| %>
-    <%= render "attachment_fields", f: a  %>
-  <% end %>
-  <div class="links">
-    <%= link_to_add_association 'add attachment', f, :attachments %>
+
+        <!-- Portfolio Item Row -->
+  <div class="row">
+
+      <div class="col-md-8">
+          <%= image_tag @product.image %>
+      </div>
+      <div class="col-md-4">
+        <h3>Art Description</h3>
+        <p><%= @product.description %></p>
+            <ul>
+                <li>Price:       $ <%= @product.price %></li>
+                <li>Sku:           <%= @product.sku %></li>
+                <li>Quantity:      <%= @product.quantity %></li>
+                <li>Producer Name: <%= @product.producer.name %></li>
+                <li>Listing Day:   <%= formatted_date(@product.created_at) %></li>
+                <% if @product.favourited_by?(current_user) %>
+                <li><%= link_to "Un-Favourite", product_favourite_path(@product, @favourite),
+                              method: :delete  %></li>
+                <% else %>
+                <li><%= link_to "Favourite", product_favourites_path(@product), method: :post %></li>
+                <% end %>
+            </ul>
+            <%= link_to "Buy Now", product_paynows_path(@product), method: :post , class:"btn btn-primary" ,id:"Buy_Now"%>
+            <a href="#" class="btn btn-default" id="My_Demo">My Demo</a>
+        </div>
   </div>
-  <%= f.submit "Submit Product", class: "btn btn-primary" %>
-<% end %>
+  <!-- /.row -->
+  <br>
+  <br>
+
+  <div class="row demo_board">
+      <div class="demo_page col-md-10">
+            <a href="#">
+                  <%= image_tag "figure-2-800-500.jpg" %>
+            </a>
+      </div>
+  </div>
+      <div class=" row ">
+      <div class=" col-md-6">
+        <button type="button" class="btn btn-primary" id="Show_now">Show Now</button>
+        <button type="button" class="btn btn-primary" id="Color_Pick">Color Pick</button>
+      </div >
+      <div class="input-group  col-md-6 demo2">
+        <input type="text" value="#00AABB" class="form-control" />
+        <span class="input-group-addon"><i></i></span>
+    </div>
+  </div>
+
+
+<!-- Looking For Similar Arts -->
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Looking For Similar Arts</h3>
+    </div>
 </div>
+
+<div class="carosel" id="carosel1 ">
+    <div class="carosel-inner slide_listing">
+    <a class="carosel-control carosel-control-left glyphicon  left glyphicon-chevron-left " href="#slide" data-slide="next"></a>
+    <%  @product.find_same_product(@product.category_id).each do |pro| %>
+    <%=  image_tag(pro.image ,class:"carosel-item")%>
+    <% end %>
+    <a class="carosel-control carosel-control-right glyphicon  right glyphicon-chevron-right " href="#slide" data-slide="prev"></a>
+    </div>
+    <!-- <div class="row"> -->
+
+    <!-- </div> -->
+    <!-- <a class="left carousel-control" href="#" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    </a> -->
 </div>
+<!-- // <script> -->
+<!-- // $(document).ready(function(){
+//     $('a.carosel-control-right').click(function(e) {
+//       e.preventDefault();
+//       $(this).blur();
+//       $(this).parent().find('.carosel-item').first().insertAfter($(this).parent().find('.carosel-item').last());
+//     });
+//     $('a.carosel-control-left').click(function(e) {
+//       e.preventDefault();
+//       $(this).blur();
+//       $(this).parent().find('.carosel-item').last().insertBefore($(this).parent().find('.carosel-item').first());
+//     });
+// }); -->
+<!-- // </script> -->
 
 <hr>
 <div id="reviews">
 <h4>Reviews</h4>
   <% if @product.reviews.present?  %>
   <% @product.reviews.each do |rev| %>
-    <%# partials can access instance varialbes but not
-         local variables, so I can access @product but not
-         review so i need to pass review in  %>
     <%= render "/reviews/review", review: rev %>
   <% end %>
   <% end %>

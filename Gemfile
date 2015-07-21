@@ -73,7 +73,9 @@ gem "roadie-rails"
 gem 'whenever', :require => false
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'stripe'
+gem 'aasm'
+gem 'virtus'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

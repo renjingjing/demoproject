@@ -11,6 +11,8 @@ ActiveAdmin.register Product do
         column :updated_at
         column :category_id
         column :producer_id
+        column :image
+
         actions
       end
 
@@ -25,12 +27,14 @@ ActiveAdmin.register Product do
           f.input :updated_at
           f.input :category_id
           f.input :producer_id
+          f.input :image
+
         end
         f.actions
       end
 
     permit_params do
-      [:title,:description,:price,:sku,:quantity,:category_id,:producer_id,:created_at,:updated_at]
+      [:title,:description,:price,:sku,:quantity,:category_id,:producer_id,:created_at,:updated_at,:image]
     end
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

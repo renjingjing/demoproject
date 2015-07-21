@@ -41,10 +41,35 @@ class Product < ActiveRecord::Base
   # validates(:body, {:uniqueness => {:scope => :title}})
   validates :description, uniqueness: {scope: :title}
 
+  has_one :paynow
+
 
   # after_initialize :set_defaults
   before_validation :capitalize
-
+  # include AASM
+  #     aasm do
+  #       state :published, initial: true
+  #       # state :pay_now
+  #       state :in_cart
+  #       state :canceled
+  #       state :paynow_met
+  #       state :already_pay
+  #       state :payment_met
+  #       state :draft
+  #       state :good_price
+  #
+  #       event :instant_pay do
+  #         transitions from: :published, to: :paynow_met
+  #       end
+  #
+  #       event :sold_out do
+  #         transitions from: :paynow_met, to: :already_pay
+  #       end
+  #
+  #       event :canceld do
+  #           transitions from: :paynow_met,to: :published
+  #       end
+      # end
 
   # Method that takes a single argument and returns all the products whose
   # title or price include the argument passed. It should be find all the records
@@ -53,7 +78,6 @@ class Product < ActiveRecord::Base
     where(["price ILIKE ? OR title ILIKE ?", "%#{term}%", "%#{term}%"])
   end
 
-
   def favourited_by?(user)
     favourites.where(user: user).present?
   end
@@ -61,6 +85,13 @@ class Product < ActiveRecord::Base
   def favourite_for(user)
     favourites.find_by_user_id(user)
   end
+
+  def find_same_product(category)
+    # Product.find_by_category_id(category)
+    Product.where(category_id: category)
+
+  end
+
 
   def reviewed_by?(user)
     reviews.where(user: user).present?

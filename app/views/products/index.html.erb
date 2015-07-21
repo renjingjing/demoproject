@@ -1,0 +1,31 @@
+<div class="row">
+
+<div class="container col-md-4">
+</div>
+<div class="container col-md-4">
+  <h1>Product List</h1>
+</div>
+<div class="container col-md-4">
+</div>
+</div>
+
+<% @products.each do |product| %>
+<div class="row">
+  <div class="container col-md-1">
+  </div>
+  <div class="container col-md-4">
+    <h3><%= link_to product.title , product_path(product)%></h3>
+      <p>Price:      $ <%= product.price %></p>
+      <p>Sku:        <%= product.sku %></p>
+      <p>Quantity:   <%= product.quantity %></p>
+      <p>Producer Name:   <%= product.producer.name %></p>
+ </div>
+ <div class="container col-md-1">
+ </div>
+ <div class="container col-md-4 index">
+      <%= image_tag product.image%>
+ </div>
+  <div class="container col-md-2">
+  </div>
+</div>
+<% end %>

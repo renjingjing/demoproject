@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713225633) do
+ActiveRecord::Schema.define(version: 20150721033041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 20150713225633) do
 
   add_index "attachments", ["product_id"], name: "index_attachments_on_product_id", using: :btree
 
+  create_table "carts", force: :cascade do |t|
+    t.integer  "quantity"
+    t.float    "payment"
+    t.string   "note"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.string   "stripe_txn_id"
+    t.string   "aasm_state"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "carts", ["product_id"], name: "index_carts_on_product_id", using: :btree
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -88,6 +103,19 @@ ActiveRecord::Schema.define(version: 20150713225633) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "paynows", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.string   "stripe_txn_id"
+    t.string   "aasm_state"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "paynows", ["product_id"], name: "index_paynows_on_product_id", using: :btree
+  add_index "paynows", ["user_id"], name: "index_paynows_on_user_id", using: :btree
+
   create_table "producers", force: :cascade do |t|
     t.string   "name"
     t.string   "information"
@@ -105,6 +133,7 @@ ActiveRecord::Schema.define(version: 20150713225633) do
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
     t.integer  "producer_id"
+    t.string   "image"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
@@ -130,14 +159,21 @@ ActiveRecord::Schema.define(version: 20150713225633) do
     t.string   "address1"
     t.string   "address2"
     t.string   "note"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.string   "image"
+    t.string   "stripe_customer_token"
+    t.string   "stripe_last_4"
+    t.string   "stripe_card_type"
   end
 
   add_foreign_key "attachments", "products"
+  add_foreign_key "carts", "products"
+  add_foreign_key "carts", "users"
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
+  add_foreign_key "paynows", "products"
+  add_foreign_key "paynows", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "producers"
   add_foreign_key "reviews", "products"
