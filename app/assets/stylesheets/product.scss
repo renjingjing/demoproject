@@ -6,7 +6,25 @@ body {
 }
 
 .portfolio-item {
-    margin-bottom: 25px;
+    margin: 25px;
+    width:100%;
+    height:100%;
+    position: relative;
+    float:left;
+}
+.portfolio-div {
+    margin: 25px;
+    width:100%;
+    height:100%;
+    position: relative;
+}
+
+.portfolio-detail{
+  margin: 25px;
+  width:100%;
+  height:100%;
+  position: relative;
+  float:right;
 }
 
 footer {
@@ -18,7 +36,6 @@ footer {
   width: 300px;
   height: 200px;
   background-color: lightgrey;
-
 }
 
 .index > img {
@@ -31,10 +48,106 @@ footer {
 }
 
 .slide_listing > img {
-  width: 250px;
+  width: 275px;
   height : 200px;
-  margin: 10px;
+  padding: 10px;
 }
+
+.slide_cover   {
+  width: 100%;
+  height: 100%;
+  border-top-width: 22px;
+  border-top-color: #C5C5C3;
+  border-top-style: solid;
+  border-bottom-width: 22px;
+  border-bottom-color: #C5C5C3;
+  border-bottom-style: solid;
+  position: absolute;
+  top:0px;
+  left:0px;
+}
+
+.show_product >img{
+  width: 700px;
+  height: auto;
+  max-width: 700px;
+  position: relative;
+  top:0px;
+  left:0px;
+}
+
+.demo_board{
+  // display:none;
+  width:650px;
+  height:550px;
+  float:top;
+  background-color:white;
+  position: relative;
+}
+
+.demo_container {
+  display:none;
+  max-width:1200px;
+  max-height:750px;
+}
+
+.zoom_container {
+    // display: none;
+    position: absolute;
+    background-color: #e8deb7;
+    height: 250px;
+    width: 360px;
+    margin: auto;
+    border-style: solid black 2px inset;
+    background-image: image() no-repeat center center fixed;
+  }
+
+
+
+.demo_page{
+  // display:none;
+  position: absolute;
+  width: 600px;
+  height: auto;
+  margin:60px 70px 50px 56px;
+}
+
+#frame-image {
+  position: absolute;
+  height: 400px;
+  width: 520px;
+}
+
+#carosel_frame {
+  position: relative;
+  width: 650px;
+}
+
+
+#demo_image{
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  //8 times
+  max-width: 576px;
+  max-height: 428px;
+  //8 times
+  min-width: 224px;
+  min-height: 172px;
+}
+
+#demo_frame{
+  position: absolute;
+  width: 400px;
+  height: 300px;
+  //8 times
+  max-width: 576px;
+  max-height: 428px;
+  //8 times
+  min-width: 224px;
+  min-height: 172px;
+}
+
 
 h4 h3 > a {
   color: white !important;

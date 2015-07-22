@@ -2,21 +2,23 @@
     <!-- Portfolio Item Heading -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Portfolio Item
-                <small><%= @product.title %></small>
-              </h1>
+            <h1 class="page-header"><%= @product.title %>
+            </h1>
           </div>
       </div>
 
 
 
         <!-- Portfolio Item Row -->
-  <div class="row">
-
-      <div class="col-md-8">
+  <div class="container-fluid  ">
+      <div class="container-fluid col-md-6 portfolio-item">
+          <div class="show_product">
           <%= image_tag @product.image %>
+          </div>
       </div>
-      <div class="col-md-4">
+      <div class="container-fluid col-md-2 portfolio-div">
+      </div>
+      <div class="container-fluid col-md-4 portfolio-detail">
         <h3>Art Description</h3>
         <p><%= @product.description %></p>
             <ul>
@@ -39,25 +41,64 @@
   <!-- /.row -->
   <br>
   <br>
-
-  <div class="row demo_board">
-      <div class="demo_page col-md-10">
-            <a href="#">
-                  <%= image_tag "figure-2-800-500.jpg" %>
-            </a>
+<div class="demo_container ">
+  <div class="container col-md-5">
+      <p>Slide The Color Pannel or enter the Hex Code!</p>
+      <div class="input-group  demo2">
+        <input type="text" value="#00AABB" class="form-control" id="color"/>
+        <span class="input-group-addon"><i></i></span>
+      </div>
+      <br>
+  </div>
+  <div class="container col-md-4">
+      <p>Zoom_in or Zoom_out Demo</p>
+      <div class=" col-md-5">
+        <button type="button" class="btn btn-default btn-sm" id="zoom_in">
+          <span class="glyphicon glyphicon-zoom-in"></span> Zoom-in
+        </button>
+      </div>
+      <div class=" col-md-5">
+        <button type="button" class="btn btn-default btn-sm" id="zoom_out">
+          <span class="glyphicon glyphicon-zoom-out"></span> Zoom-out
+      </button>
       </div>
   </div>
-      <div class=" row ">
+  <div class="container col-md-3">
+      <p>Want Image</p>
+      <div class=" col-md-3">
+        <span class="glyphicon glyphicon-zoom-out" id="PicSmaller"></span>Smaller
+      </div>
+      <div class=" col-md-3">
+        <span class="glyphicon glyphicon-zoom-in" id="Picbigger"></span>Bigger
+      </div>
+        <p></p>
       <div class=" col-md-6">
-        <button type="button" class="btn btn-primary" id="Show_now">Show Now</button>
-        <button type="button" class="btn btn-primary" id="Color_Pick">Color Pick</button>
-      </div >
-      <div class="input-group  col-md-6 demo2">
-        <input type="text" value="#00AABB" class="form-control" />
-        <span class="input-group-addon"><i></i></span>
-    </div>
+        <button type="button" class="btn btn-default btn-xs" id="Exit_Demo">ExitDemo</button>
+      </div>
   </div>
-
+<br>
+<br>
+  <div class="container col-md-12 demo_board ">
+        <%= image_tag @product.image, id:"demo_image" %>
+        <%= image_tag "frame_1.png" , id:"demo_frame"%>
+  </div>
+<br>
+  <div class="contianer col-md-12">
+      <div class="carosel" id="carosel_frame ">
+          <div class="carosel-inner slide_listing" id="slide_frame_selected">
+           <%= image_tag "frame-820-620-1.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-2.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-3.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-4.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-5.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-6.png", class: "carosel-item frame_lib" %>
+           <%= image_tag "frame-820-620-7.png", class: "carosel-item frame_lib" %>
+          </div>
+          <a class="carosel-control carosel-control-left glyphicon  left glyphicon-chevron-left frame_left" href="#slide" data-slide="next"></a>
+          <a class="carosel-control carosel-control-right glyphicon  right glyphicon-chevron-right frame_right" href="#slide" data-slide="prev"></a>
+      </div>
+      <p>Choose a Frame Here Please!</p>    </div>    <br>
+</div>
 
 <!-- Looking For Similar Arts -->
 <div class="row">
@@ -68,38 +109,17 @@
 
 <div class="carosel" id="carosel1 ">
     <div class="carosel-inner slide_listing">
-    <a class="carosel-control carosel-control-left glyphicon  left glyphicon-chevron-left " href="#slide" data-slide="next"></a>
     <%  @product.find_same_product(@product.category_id).each do |pro| %>
-    <%=  image_tag(pro.image ,class:"carosel-item")%>
+    <%#=  image_tag(pro.image ,class="carosel-item")%>
+    <%=link_to image_tag(pro.image, class: "carosel-item"), product_path(pro) %>
     <% end %>
-    <a class="carosel-control carosel-control-right glyphicon  right glyphicon-chevron-right " href="#slide" data-slide="prev"></a>
     </div>
-    <!-- <div class="row"> -->
-
-    <!-- </div> -->
-    <!-- <a class="left carousel-control" href="#" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    </a> -->
+    <div class="slide_cover">
+    </div>
+    <a class="carosel-control carosel-control-left glyphicon  left glyphicon-chevron-left " href="#slide" data-slide="next"></a>
+    <a class="carosel-control carosel-control-right glyphicon  right glyphicon-chevron-right " href="#slide" data-slide="prev"></a>
 </div>
-<!-- // <script> -->
-<!-- // $(document).ready(function(){
-//     $('a.carosel-control-right').click(function(e) {
-//       e.preventDefault();
-//       $(this).blur();
-//       $(this).parent().find('.carosel-item').first().insertAfter($(this).parent().find('.carosel-item').last());
-//     });
-//     $('a.carosel-control-left').click(function(e) {
-//       e.preventDefault();
-//       $(this).blur();
-//       $(this).parent().find('.carosel-item').last().insertBefore($(this).parent().find('.carosel-item').first());
-//     });
-// }); -->
-<!-- // </script> -->
-
-<hr>
+<br>
 <div id="reviews">
 <h4>Reviews</h4>
   <% if @product.reviews.present?  %>
@@ -108,5 +128,6 @@
   <% end %>
   <% end %>
 </div>
+
 <div class="clearfix"></div>
 <%= render "/reviews/form" %>
