@@ -1,7 +1,7 @@
 class PaynowsController < ApplicationController
   before_action :authenticate_user!
 
-  def create
+def create
     @product = Product.find params[:product_id]
     @paynow = Paynow.new
     @paynow.product = @product
@@ -11,13 +11,12 @@ class PaynowsController < ApplicationController
        redirect_to new_paynow_payment_path(@paynow), notice: "Please make the payment"
   else
     @error_message = "Sorry! Something went wrong. Try again."
-
     render "/product/show"
   end
 end
 
   private
   def get_errors
-  @paynow.errors.full_messages.join('; ')
+  @paynow.errors.full_messages.join(';')
   end
 end

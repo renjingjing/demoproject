@@ -28,10 +28,10 @@
                 <li>Producer Name: <%= @product.producer.name %></li>
                 <li>Listing Day:   <%= formatted_date(@product.created_at) %></li>
                 <% if @product.favourited_by?(current_user) %>
-                <li><%= link_to "Un-Favourite", product_favourite_path(@product, @favourite),
+                <li><%= link_to "<i class='glyphicon glyphicon-heart red'></i>".html_safe, product_favourite_path(@product, @favourite),
                               method: :delete  %></li>
                 <% else %>
-                <li><%= link_to "Favourite", product_favourites_path(@product), method: :post %></li>
+                <li><%= link_to "<i class='glyphicon glyphicon-heart-empty '></i>".html_safe, product_favourites_path(@product), method: :post %></li>
                 <% end %>
             </ul>
             <%= link_to "Buy Now", product_paynows_path(@product), method: :post , class:"btn btn-primary" ,id:"Buy_Now"%>
@@ -103,7 +103,7 @@
 <!-- Looking For Similar Arts -->
 <div class="row">
     <div class="col-lg-12">
-        <h3 class="page-header">Looking For Similar Arts</h3>
+        <h1 class="page-header">Looking For Similar Arts</h1>
     </div>
 </div>
 
@@ -120,14 +120,14 @@
     <a class="carosel-control carosel-control-right glyphicon  right glyphicon-chevron-right " href="#slide" data-slide="prev"></a>
 </div>
 <br>
-<div id="reviews">
-<h4>Reviews</h4>
+<div class="container" id="reviews">
+<h1>Reviews</h1>
   <% if @product.reviews.present?  %>
   <% @product.reviews.each do |rev| %>
     <%= render "/reviews/review", review: rev %>
   <% end %>
   <% end %>
 </div>
-
 <div class="clearfix"></div>
-<%= render "/reviews/form" %>
+  <%= render "/reviews/form" %>
+</div>

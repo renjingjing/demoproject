@@ -1,10 +1,3 @@
-// Place all the styles related to the welcomes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.main-image {
-  width: 400px;
-}
-
 /*!
  * Start Bootstrap - Heroic Features HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -15,9 +8,6 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
-footer {
-    margin: 50px 0;
-}
 
 
 #front-page-container{
@@ -43,7 +33,7 @@ footer {
     font-size: 1.25em;
     font-weight: 400;
     letter-spacing: 3px;
-    color:  #337ab7;
+    color: #337ab7 #337ab7;
 
 }
 
@@ -4296,6 +4286,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding-bottom: 10px;
   line-height: 20px;
 }
+
+.navbar-nav > li > a:hover {
+  background-color: #D8450B;
+}
+
 @media (max-width: 767px) {
   .navbar-nav .open .dropdown-menu {
     position: static;
@@ -4477,6 +4472,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a {
   color: #777;
+
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {

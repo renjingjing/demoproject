@@ -1,3 +1,233 @@
+// // Place all the styles related to the products controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+// body {
+//     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+// }
+//
+// .portfolio-item {
+//     margin: 25px;
+//     width:100%;
+//     height:100%;
+//     position: relative;
+//     float:left;
+// }
+// .portfolio-div {
+//     margin: 25px;
+//     width:100%;
+//     height:100%;
+//     position: relative;
+// }
+//
+// .portfolio-detail{
+//   margin: 25px;
+//   width:100%;
+//   height:100%;
+//   position: relative;
+//   float:right;
+// }
+//
+// footer {
+//     margin: 50px 0;
+// }
+//
+//
+// .index_img{
+//   width: 300px;
+//   height: 200px;
+//   background-color: lightgrey;
+// }
+//
+// .index > img {
+//   width: auto;
+//   height : 200px;
+//   max-height: 100%;
+//   max-width: 100%;
+//   margin: 10px;
+//   padding: 10px;
+// }
+//
+// .slide_listing > img {
+//   width: 275px;
+//   height : 200px;
+//   padding: 10px;
+// }
+//
+// .slide_cover   {
+//   width: 100%;
+//   height: 100%;
+//   border-top-width: 22px;
+//   border-top-color: #C5C5C3;
+//   border-top-style: solid;
+//   border-bottom-width: 22px;
+//   border-bottom-color: #C5C5C3;
+//   border-bottom-style: solid;
+//   position: absolute;
+//   top:0px;
+//   left:0px;
+// }
+//
+// .show_product >img{
+//   width: 700px;
+//   height: auto;
+//   max-width: 700px;
+//   position: relative;
+//   top:0px;
+//   left:0px;
+// }
+//
+// .demo_board{
+//   // display:none;
+//   width:650px;
+//   height:550px;
+//   float:top;
+//   background-color:white;
+//   position: relative;
+// }
+//
+// .demo_container {
+//   display:none;
+//   max-width:1200px;
+//   max-height:750px;
+// }
+//
+// .zoom_container {
+//     // display: none;
+//     position: absolute;
+//     background-color: #e8deb7;
+//     height: 250px;
+//     width: 360px;
+//     margin: auto;
+//     border-style: solid black 2px inset;
+//     background-image: image() no-repeat center center fixed;
+//   }
+//
+//
+//
+// .demo_page{
+//   // display:none;
+//   position: absolute;
+//   width: 600px;
+//   height: auto;
+//   margin:60px 70px 50px 56px;
+// }
+//
+// #frame-image {
+//   position: absolute;
+//   height: 400px;
+//   width: 520px;
+// }
+//
+// #carosel_frame {
+//   position: relative;
+//   width: 650px;
+// }
+//
+//
+// #demo_image{
+//   position: absolute;
+//   width: 400px;
+//   height: 300px;
+//   //8 times
+//   max-width: 576px;
+//   max-height: 428px;
+//   //8 times
+//   min-width: 224px;
+//   min-height: 172px;
+// }
+//
+// #demo_frame{
+//   position: absolute;
+//   width: 400px;
+//   height: 300px;
+//   //8 times
+//   max-width: 576px;
+//   max-height: 428px;
+//   //8 times
+//   min-width: 224px;
+//   min-height: 172px;
+// }
+//
+//
+// h4 h3 > a {
+//   color: white !important;
+// }
+//
+// h1 {
+//   color: #337ab7 !important;
+// }
+//
+// p {
+//   color:white;
+// }
+//
+// .red {
+//   color:red;
+// }
+// // for slide list-group
+// @media (max-width: 300px) {
+//   .carosel-item {
+//     width: 100%;
+//   }
+// }
+// @media (min-width: 300px) {
+//   .carosel-item {
+//     width: 50%;
+//   }
+// }
+// @media (min-width: 500px) {
+//   .carosel-item {
+//     width: 33.333%;
+//   }
+// }
+// @media (min-width: 768px) {
+//   .carosel-item {
+//     width: 25%;
+//   }
+// }
+// .carosel {
+//   position: relative;
+//   background-color: rgba(229, 229, 228, 0.5);
+// }
+// .carosel-inner {
+//   white-space: nowrap;
+//   overflow: hidden;
+//   font-size: 0;
+// }
+// .carosel-item {
+//   display: inline-block;
+// }
+// .carosel-control {
+//   position: absolute;
+//   top: 50%;
+//   padding: 15px;
+//   box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.7);
+//   transform: translateY(-50%);
+//   border-radius: 50%;
+//   color: rgba(255, 227, 31, 1);
+//   font-size: 30px;
+//   display: inline-block;
+// }
+//
+// .carosel-control-left {
+//   left: 15px;
+//   float:left;
+//   margin-top: 80px;
+//   position: absolute !important;
+// }
+// .carosel-control-right {
+//   right: 15px;
+//   float:right;
+//   margin-top: 80px;
+//   position: absolute !important;
+//
+// }
+// .carosel-control:active,
+// .carosel-control:hover {
+//   text-decoration: none;
+//   color: rgba(255, 255, 255, 1);
+// }
+
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
@@ -27,9 +257,6 @@ body {
   float:right;
 }
 
-footer {
-    margin: 50px 0;
-}
 
 
 .index_img{
@@ -154,6 +381,46 @@ h4 h3 > a {
 }
 h1 {
   color: #337ab7 !important;
+}
+
+.red {
+  color:red;
+}
+
+.index_container {
+  background-color:white ;
+  // opacity:0.4 ;
+  border-radius:5px;
+  padding:50px;
+  margin-bottom:10px;
+  border-style: solid;
+}
+
+.portfolio-detail{
+  background-color:white ;
+  // opacity:0.4 ;
+  border-radius:5px;
+  padding:50px;
+}
+
+#myDIV {
+    background: white;
+    -webkit-animation: mymove 5s infinite; /* Chrome, Safari, Opera */
+    animation: mymove 5s infinite;
+    border-radius:5px;
+    margin-bottom:10px;
+}
+
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    from {background-color: white;}
+    to {background-color: #FEFFD9;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    from {background-color: white;}
+    to {background-color: #FEFFD9;}
 }
 
 // for slide list-group

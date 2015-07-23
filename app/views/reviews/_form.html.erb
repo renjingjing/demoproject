@@ -1,6 +1,14 @@
+<div class="container col-md-1">
+</div>
+<div class="container col-md-10" >
 <h4>Add Review</h4>
-<%= simple_form_for [@product, @review], remote: true do |f| %>
-  <%= f.input :body, label: false, input_html: {placeholder: "review"} %>
-  <%= f.input :image %>
-  <%= f.submit "Submit", class: "btn btn-primary" %>
+<%= simple_form_for [@product, @review],remote: true,html: {class: "form-horizontal"}  do |f| %>
+  <%= f.input :body, label: false, input_html: {placeholder: "input your review", size:120, maxlength:150},html: {class:"form-control"} %>
+  <br>
+  <%= f.input :image, label: false,html: {class: "btn btn-success btn-md fileinput-button form-control" ,id:"review_body"} %>
+  <br>
+  <%= f.submit "Submit", class: "btn btn-primary btn-md" %>
 <% end %>
+</div>
+<div class="container col-md-1">
+</div>

@@ -1,9 +1,14 @@
+<div class="container col-md-2">
+</div>
+<div class="container col-md-8 white_container_for_dark_p">
 <h1>Producers and Information</h1>
 <% @producers.each do |producer| %>
-  <hr>
+  <br>
   <div>
     <h4><%= producer.name %></h4>
-    <!-- <br> -->
     <%= producer.information %>
   </div>
 <% end %>
+</div>
+<div class="container col-md-2">
+</div>

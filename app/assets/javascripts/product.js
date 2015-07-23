@@ -26,8 +26,9 @@ $(document).ready(function(){
       $(this).parent().find('.carosel-item').last().insertBefore($(this).parent().find('.carosel-item').first());
     });
 
-    $("#My_Demo").on("click",function(e){
-      e.preventDefault();
+    $("#My_Demo").on("click",function(){
+      // e.preventDefault();
+      console.log("open");
       $(".demo_container").fadeIn("slow");
     });
 
