@@ -1,9 +1,9 @@
 class ProductsController < ApplicationController
   before_action :find_product, only: [:show,:edit,:update]
+  # if rspec hide authenticate_user
   before_action :authenticate_user!, only: [:index,:show,:edit,:update]
 
   #need separate user and admin_user
-
   # before_action :authorize, only: [:edit, :update, :destroy]
 
   def index
