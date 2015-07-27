@@ -16,7 +16,7 @@ class NewsletterMailer < ApplicationMailer
     print(">>>>>>>>>>>>>>>>>>>")
     User.all.each do |user|
       @greeting = "#{user.full_name}"
-    mail to: user.email, subject: "Thank For Asking Our Weekly Newsletter! Art Gallery"
+      mail to: user.email, subject: "Thank For Asking Our Weekly Newsletter! Art Gallery"
     end
   end
 end
